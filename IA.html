@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IA PODDADOS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000; /* Fundo preto */
+      color: #fff;
+      text-align: center;
+    }
+    /* ... (resto do estilo) ... */
+  </style>
+</head>
+<!-- Resto do código permanece igual -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IA PODDADOS</title>
+  <style>
+    /* Estilos (mantive os estilos anteriores) */
+    /* ... */
+    /* Novos estilos para dividir o container em 3 partes */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .calculator {
+      flex-basis: calc(33.33% - 20px);
+      margin: 10px;
+    }
+
+    .calculator:nth-child(3) {
+      flex-basis: calc(33.33% - 20px);
+    }
+
+    .iframe-container {
+      flex-basis: 100%;
+      margin-top: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Calculadora 1 -->
+    <div class="calculator">
+      <h1>IA PODDADOS</h1>
+      <label>Defina a quantidade de cores azuis:</label>
+      <input type="number" id="quantidadeAzulInput" value="0" min="0">
+      <br>
+      <label>Defina a quantidade de cores vermelhas:</label>
+      <input type="number" id="quantidadeVermelhoInput" value="0" min="0">
+      <br>
+      <button onclick="calcularResultado()">Calcular</button>
+      <p class="resultado" id="resultado">-</p>
+    </div>
+
+    <!-- Calculadora 2 -->
+    <div class="calculator">
+      <h1>IA PODDOUBLE</h1>
+      <label>Defina a quantidade de cores vermelhas:</label>
+      <input type="number" id="quantidadeVermelhoInput2" value="0" min="0">
+      <br>
+      <label>Defina a quantidade de cores pretas:</label>
+      <input type="number" id="quantidadePretoInput" value="0" min="0">
+      <br>
+      <button onclick="calcularResultado2()">Calcular</button>
+      <p class="resultado" id="resultado2">-</p>
+    </div>
+
+    <!-- Calculadora 3 -->
+    <div class="calculator">
+      <h1>IA POD GERENCIAMENTO</h1>
+      <label>Valor inicial:</label>
+      <input type="number" id="valorInicialInput" value="100" min="0">
+      <br>
+      <button onclick="calcularPercentual()">Calcular</button>
+      <p class="resultado" id="resultadoPercent">-</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaResultado"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Espelhamento de site -->
+  <div class="iframe-container">
+    <iframe src="https://blaze.com/pt////en/bet/main" frameborder="0"></iframe>
+  </div>
+
+  <script>
+    // Função para calcular o resultado da primeira calculadora
+    function calcularResultado() {
+      let quantidadeAzul = parseInt(document.getElementById('quantidadeAzulInput').value);
+      let quantidadeVermelho = parseInt(document.getElementById('quantidadeVermelhoInput').value);
+
+      let resultadoElement = document.getElementById('resultado');
+      resultadoElement.innerText = quantidadeVermelho >= 3 ? "Entrar na cor vermelha" : "Entrar na cor azul";
+
+      resultadoElement.classList.remove('red-text', 'blue-text');
+      if (quantidadeVermelho >= 3) {
+        resultadoElement.classList.add('red-text');
+      } else if (quantidadeAzul >= 3) {
+        resultadoElement.classList.add('blue-text');
+      }
+    }
+
+    // Função para calcular o resultado da segunda calculadora
+    function calcularResultado2() {
+      let quantidadeVermelho = parseInt(document.getElementById('quantidadeVermelhoInput2').value);
+      let quantidadePreto = parseInt(document.getElementById('quantidadePretoInput').value);
+
+      let resultadoElement2 = document.getElementById('resultado2');
+      resultadoElement2.innerText = quantidadePreto >= 2 ? "Entrar na cor preta" : "Entrar na cor vermelha";
+
+      resultadoElement2.classList.remove('red-text', 'blue-text');
+      if (quantidadePreto >= 2) {
+        resultadoElement2.classList.add('blue-text');
+      } else if (quantidadeVermelho >= 3) {
+        resultadoElement2.classList.add('red-text');
+      }
+    }
+
+    // Função para calcular o resultado da terceira calculadora
+    function calcularPercentual() {
+      let valorInicial = parseFloat(document.getElementById('valorInicialInput').value);
+      let valorFinal = valorInicial;
+
+      let tabelaResultado = document.getElementById('tabelaResultado');
+      tabelaResultado.innerHTML = ""; // Clear previous results
+
+      for (let dia = 1; dia <= 30; dia++) {
+        valorFinal += valorFinal * 0.07; // Crescimento de 7% ao dia
+
+        let newRow = tabelaResultado.insertRow();
+        let dayCell = newRow.insertCell(0);
+        let valueCell = newRow.insertCell(1);
+
+        dayCell.innerText = dia;
+        valueCell.innerText = "R$ " + valorFinal.toFixed(2);
+      }
+
+      let resultadoPercentElement = document.getElementById('resultadoPercent');
+      resultadoPercentElement.innerText = "Valor gerenciado 30 dias: R$ " + valorFinal.toFixed(2);
+    }
+  </script>
+</body>
+</html>
